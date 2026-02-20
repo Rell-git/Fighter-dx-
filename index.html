@@ -70,6 +70,25 @@ viewport-fit=cover">
       }
     }
 
+/* Responsive PC-style scaling */
+#gameWrapper {
+  transform: scale(0.85); /* change 0.75 - 0.9 kung gaano kaliit */
+  transform-origin: center;
+}
+
+/* Auto adjust for smaller devices */
+@media (max-width: 900px) {
+  #gameWrapper {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 600px) {
+  #gameWrapper {
+    transform: scale(0.65);
+  }
+}
+
     .wrap {
       position: relative;
       z-index: 1;
@@ -512,43 +531,82 @@ viewport-fit=cover">
     .kbd-hint.hidden {
       display: none;
     }
+
+    .playstore {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  z-index: 9999;
+}
+
+.app-card {
+  width: 340px;
+  background: #fff;
+}
+
+.app-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.app-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+}
+
+.rating {
+  margin-top: 20px;
+  color: #555;
+  font-size: 14px;
+}
+
+.install-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  background: #1a73e8;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
   </style>
 </head>
 
 <body>
+<div id="gameWrapper"></div>
+<div id="installScreen" class="playstore">
+  
+  <div class="app-card">
+    
+    <div class="app-header">
+      <img src="icon-192.png" class="app-icon">
+      <div>
+        <h2>FIGHTER GAME</h2>
+        <p>Rayven Studios</p>
+      </div>
+    </div>
 
-  <!-- PLAYSTORE CLONE -->
-  <div id="installScreen" style="
-position:fixed;
-inset:0;
-background:#121212;
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-font-family:Arial;
-text-align:center;
-">
+    <div class="rating">
+      ⭐ 4.9 • 1K reviews  
+      🎮 Action • Offline
+    </div>
 
-    <h1 style="margin-bottom:10px;">🎮 FIGHTER GAME</h1>
-    <p style="opacity:0.7;">Install for best gaming experience</p>
-
-    <button id="installBtn" style="
-margin-top:20px;
-padding:14px 30px;
-background:#00c853;
-border:none;
-border-radius:8px;
-color:white;
-font-size:16px;
-cursor:pointer;
-">
-      INSTALL
+    <button id="installBtn" class="install-btn">
+      Install
     </button>
 
   </div>
+
+</div>
   <div class="wrap">
     <div class="scr-out">
       <div class="scr">
@@ -657,7 +715,7 @@ cursor:pointer;
     <div class="kbd-hint hidden" id="kbdHint">← → MOVE &nbsp;|&nbsp; ↑ JUMP &nbsp;|&nbsp; ↓ CROUCH &nbsp;|&nbsp; Z ATK
       &nbsp;|&nbsp; X SK1 &nbsp;|&nbsp; C SK2 &nbsp;|&nbsp; S STAGE &nbsp;|&nbsp; ESC MENU</div>
   </div>
-
+</div>
   <script>
     // ══════════════════════════════════════════════════════════════════
     //  AUDIO
@@ -1945,6 +2003,13 @@ cursor:pointer;
     window.addEventListener("appinstalled", () => {
       installScreen.style.display = "none";
     });
+
+    installBtn.innerText = "Installing...";
+installBtn.disabled = true;
+
+setTimeout(() => {
+  installBtn.innerText = "Opening...";
+}, 1500);
   </script>
 </body>
 
