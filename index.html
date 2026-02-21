@@ -29,7 +29,7 @@ viewport-fit=cover">
       touch-action: none;
       height: 100%;
     }
-    
+
 
     body {
       background: #1a1a1a;
@@ -70,24 +70,9 @@ viewport-fit=cover">
       }
     }
 
-/* Responsive PC-style scaling */
-#gameWrapper {
-  transform: scale(0.85); /* change 0.75 - 0.9 kung gaano kaliit */
-  transform-origin: center;
-}
-
-/* Auto adjust for smaller devices */
-@media (max-width: 900px) {
-  #gameWrapper {
-    transform: scale(0.75);
-  }
-}
-
-@media (max-width: 600px) {
-  #gameWrapper {
-    transform: scale(0.65);
-  }
-}
+    /* Responsive PC-style scaling */
+    
+   
 
     .wrap {
       position: relative;
@@ -532,42 +517,45 @@ viewport-fit=cover">
       display: none;
     }
 
-    .playstore {
+   .playstore {
   position: fixed;
   inset: 0;
   background: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Roboto, sans-serif;
+  overflow-y: auto;
+  font-family: Roboto, Arial, sans-serif;
+  padding: 20px;
   z-index: 9999;
 }
 
-.app-card {
-  width: 340px;
-  background: #fff;
-}
-
-.app-header {
+.play-header {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
 .app-icon {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 20px;
 }
 
-.rating {
-  margin-top: 20px;
-  color: #555;
+.developer {
+  color: #1a73e8;
+  margin-top: -5px;
+}
+
+.play-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
   font-size: 14px;
 }
 
+.play-meta div {
+  text-align: center;
+}
+
 .install-btn {
-  margin-top: 25px;
   width: 100%;
   padding: 14px;
   background: #1a73e8;
@@ -575,42 +563,195 @@ viewport-fit=cover">
   color: white;
   font-size: 16px;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.screenshots {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.screenshots img {
+  height: 150px;
+  border-radius: 10px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.tags span {
+  background: #f1f3f4;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.rating-overview {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.big-rating {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.comments p {
+  background: #f1f3f4;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+.bottom-nav a {
+  text-align: center;
+  font-size: 12px;
+  color: black;
+  text-decoration: none;
+}
+
+.bottom-nav img {
+  width: 24px;
+  height: 24px;
+}
+
+ #gameWrapper {
+  transform: scale(0.85); /* change 0.75 - 0.9 kung gaano kaliit */
+  transform-origin: center;
+}
+
+/* Auto adjust for smaller devices */
+@media (max-width: 900px) {
+  #gameWrapper {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 600px) {
+  #gameWrapper {
+    transform: scale(0.65);
+  }
 }
   </style>
 </head>
 
 <body>
-<div id="gameWrapper"></div>
-<div id="installScreen" class="playstore">
-  
-  <div class="app-card">
-    
-    <div class="app-header">
-      <img src="icon-192.png" class="app-icon">
-      <div>
-        <h2>FIGHTER GAME</h2>
-        <p>Rayven Studios</p>
-      </div>
+
+    <div id="installScreen" class="playstore">
+
+  <div class="play-header">
+    <img src="icon-192.png" class="app-icon">
+    <div>
+      <h1>Fighter DX</h1>
+      <p class="developer">Solomon</p>
     </div>
+  </div>
 
-    <div class="rating">
-      ⭐ 4.9 • 1K reviews  
-      🎮 Action • Offline
+  <div class="play-meta">
+    <div>
+      <strong>4.8 ★</strong>
+      <span>Reviews</span>
     </div>
+    <div>
+      <strong>15 MB</strong>
+      <span>Size</span>
+    </div>
+    <div>
+      <strong>Rated for 3+</strong>
+      <span>Age</span>
+    </div>
+    <div>
+      <strong>24+</strong>
+      <span>Downloads</span>
+    </div>
+  </div>
 
-    <button id="installBtn" class="install-btn">
-      Install
-    </button>
+  <button id="installBtn" class="install-btn">Install</button>
 
+  <!-- Screenshots -->
+  <div class="screenshots">
+    <img src="s1.jpg">
+    <img src="s2.jpg">
+    <img src="s3.jpg">
+    <img src="s4.jpg">
+    <img src="s5.jpg">
+    <img src="s6.jpg">
+    <img src="s7.jpg">
+  </div>
+
+  <h3>About this game</h3>
+  <p>
+    Fighter DX with Avatar Power. Master your stickman skills and defeat enemies in offline casual single-player battles.
+  </p>
+
+  <div class="tags">
+    <span>Stickman</span>
+    <span>Offline</span>
+    <span>Casual</span>
+    <span>Single Player</span>
+  </div>
+
+  <h3>Data Safety</h3>
+  <p>No data shared with third parties. Offline gameplay only.</p>
+
+  <h3>Ratings and Reviews</h3>
+
+  <div class="rating-overview">
+    <div class="big-rating">4.8</div>
+    <div>
+      ★★★★★ 90%<br>
+      ★★★★☆ 7%<br>
+      ★★★☆☆ 2%<br>
+      ★★☆☆☆ 1%<br>
+      ★☆☆☆☆ 0%
+    </div>
+  </div>
+
+  <div class="comments">
+    <p><strong>Jake:</strong> Best stickman game I’ve played! 🔥</p>
+    <p><strong>Anna:</strong> Smooth gameplay and offline mode is perfect.</p>
+    <p><strong>Mark:</strong> Avatar power system is cool!</p>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="https://yourwebsite.com">
+      <img src="webicon.png">
+      <span>Website</span>
+    </a>
+    <a href="#">
+      <img src="moreicon.png">
+      <span>More</span>
+    </a>
   </div>
 
 </div>
-  <div class="wrap">
-    <div class="scr-out">
-      <div class="scr">
-        <canvas id="c" width="700" height="380"></canvas>
+<div id="gameWrapper">
+  </div>
+    <div class="wrap">
+      <div class="scr-out">
+        <div class="scr">
+          <canvas id="c" width="700" height="380"></canvas>
 
         <!-- Main Menu -->
         <div class="menu-screen active" id="mainMenu">
@@ -2005,11 +2146,11 @@ viewport-fit=cover">
     });
 
     installBtn.innerText = "Installing...";
-installBtn.disabled = true;
+    installBtn.disabled = true;
 
-setTimeout(() => {
-  installBtn.innerText = "Opening...";
-}, 1500);
+    setTimeout(() => {
+      installBtn.innerText = "Opening...";
+    }, 1500);
   </script>
 </body>
 

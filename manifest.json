@@ -1,6 +1,6 @@
 {
-  "name": "FIGHTER GAME",
-  "short_name": "FIGHTER",
+  "name": "FIGHTER DX",
+  "short_name": "Fighter dx",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0f0f",
